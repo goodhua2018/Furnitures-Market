@@ -19,6 +19,6 @@ def delete_furniture(id)
     run_sql("DELETE FROM furnitures WHERE id = $1", [id])
 end
 
-def update_stock(id, quantity)
-    run_sql("UPDATE furnitures SET quantity = quantity -1  WHERE id = $1", [id])
+def update_stock(id)
+    run_sql("UPDATE furnitures SET quantity = quantity - 1  WHERE id = $1", [id])
 end

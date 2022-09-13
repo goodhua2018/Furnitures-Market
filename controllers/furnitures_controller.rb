@@ -55,10 +55,20 @@ delete '/furnitures/:id' do
     redirect '/'
 end
 
-put '/furnitures/:id/cart' do
+put '/furnitures/:id/:count/cart' do
     id = params['id']
     quantity = params['quantity']
-    update_stock(id, quantity)
+    update_stock(id)
+    count = params['count'].to_i
+    count += 1
+    p count
+    
+    furnitures = all_furnitures()
 
-    redirect '/'
+    erb :'furnitures/index', locals:{
+        furnitures: furnitures,
+        count: count
+    }
+
+    # redirect '/'
 end
