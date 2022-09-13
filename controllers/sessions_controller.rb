@@ -1,3 +1,5 @@
+require './models/user'
+
 get '/sessions/new' do
     erb :'/sessions/new'
 end
@@ -7,12 +9,7 @@ post '/sessions' do
     email = params['email']
     password = params['password']
 
-    user = run_sql("SELECT * FROM users WHERE email = $1", [email])
-    if user.to_a.count > 0 
-        user = user[0]
-    else 
-        nil
-    end
+    user = find_user_by_email(email)
     if user && BCrypt::Password.new(user['password_digest']) == password
         session['user_id'] = user['id'] 
     else
@@ -22,7 +19,12 @@ post '/sessions' do
 
 end
 
-# delete '/sessions' do
-#     session['user_id'] = nil
-#     redirect '/'
-# end
+delete '/sessions' do
+    session['user_id'] = nil
+    redirect '/'
+end
+
+get '/.sessions/cart' do
+
+    run_sql("INSERT INTO users(user_name, email, password_digest) VALUES($1, $2, $3)", [user_name, email, password_digest])
+end

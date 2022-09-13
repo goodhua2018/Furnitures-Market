@@ -1,8 +1,8 @@
-<h1>Furniture Market</h1>
+<h1>Lucky Furniture Market</h1>
 
 
 <% if logged_in? %>
-    <h2>Welcome to Furniture Market </h2>
+    <h2>Dear <%= current_user['user_name']%>, Welcome to Furniture Market </h2>
 
     <nav class="nav">
 
@@ -11,13 +11,18 @@
             <button>Search</button>
         </form>
         <section class="nav-right">
+
            
             <%# add an item%>
             <a href="./furnitures/donate">Donate Furnitures</a>
+            <a href=".sessions/cart">My cart </a> 
+            <span class="items-add-count"> <%= count%> </span>
+
             <form action="/sessions" method="POST">
                 <input type="hidden" name="_method" value="delete">
                 <button>Logout</button>
             </form>
+            
         </section>   
     </nav>
 
@@ -26,11 +31,21 @@
             <section class="furniture">
                 <header>
                     <h2><%= furniture['item']%></h2>
-                    <a href="./furnitures/<%= furniture['id'] %>/update">Update</a>
-                    <form action="/furnitures/<%= furniture['id']%>" method="POST">
-                        <input type="hidden" name="_method" value="delete">
-                        <button>Delete</button>
-                    </form>
+                    <section class="control">
+                        <form action="/furnitures/<%= furniture['id']%>/cart" method="POST">
+                            <input type="hidden" name="_method" value="put">
+                            <button>Cart</button>
+                        </form>
+
+                        <a href="./furnitures/<%= furniture['id'] %>/update">Update</a>
+
+                        <form action="/furnitures/<%= furniture['id']%>" method="POST">
+                            <input type="hidden" name="_method" value="delete">
+                            <button>Delete</button>
+                        </form>
+                        
+                    </section>
+                    
                 </header>
                 <img src="<%= furniture['photo_url']%>" alt="">
                 <p><span class="num-left"><%= furniture['quantity'] %> </span> in Stock</p>
@@ -55,7 +70,7 @@
     </nav>
     <section class="describe">
         <h2>We are here to support you</h2>
-        <p>We are a family-owned second-hand furniturn store located at Lucky Street in Adelaide. </p>
+        <p>We are a family-owned second-hand furniturn store located at 55 Lucky Street in Adelaide. </p>
         <p>We sell high-quality pre-loved furnitures and you will always be sure to find yourself a bargain. We also accept donations of all kinds of furnitures.</p>
         <img src="https://images.unsplash.com/photo-1582037928769-181f2644ecb7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">
     </section>
@@ -67,5 +82,9 @@
         <img src="https://images.unsplash.com/photo-1623920996377-9c5cd536143e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="">
 
     </section>
+    <footer class="footer">
+    © COPYRIGHT 2022. ALL RIGHTS RESERVED
+    
+    </footer>
 <% end %>
 

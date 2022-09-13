@@ -1,10 +1,11 @@
-
+require './models/furniture'
 
 get '/' do
 
-    furnitures = run_sql("SELECT * FROM furnitures ORDER BY id")
+    furnitures = all_furnitures()
     erb :'furnitures/index', locals:{
-        furnitures: furnitures
+        furnitures: furnitures,
+        count: 0
     }
 end
 
@@ -24,28 +25,40 @@ post '/furnitures/' do
     item = params['item']
     photo_url = params['photo_url']
     quantity = params['quantity']
-    run_sql("INSERT INTO furnitures (item, photo_url, quantity)
-    VALUES ($1, $2, $3)", [item, photo_url, quantity])
-
-    # add books
+    donate_furniture(item, photo_url, quantity)
+    # add 
     redirect '/'
     
 end
 
 get '/furnitures/:id/update' do
     id = params['id']
-    furniture = run_sql("SELECT * FROM furnitures WHERE id = $1", [id])[0]
-    p furniture.to_a.to_s
+    furniture = get_furniture(id)
+    # p furniture.to_a.to_s 
     erb :'/furnitures/update', locals: {
         furniture: furniture
     }
-  end
+end
 
-  put '/furnitures/:id' do
+put '/furnitures/:id' do
     id = params['id']
     item = params['item']
     photo_url = params['photo_url']
     quantity = params['quantity']
-    run_sql("UPDATE furnitures SET item = $2, photo_url = $3, quantity = $4 WHERE id = $1", [id, item, photo_url, quantity])
+    update_furniture(id, item, photo_url, quantity)
     redirect '/'
-  end
+end
+
+delete '/furnitures/:id' do
+    id = params['id']
+    delete_furniture(id)
+    redirect '/'
+end
+
+put '/furnitures/:id/cart' do
+    id = params['id']
+    quantity = params['quantity']
+    update_stock(id, quantity)
+
+    redirect '/'
+end

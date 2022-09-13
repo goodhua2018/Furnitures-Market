@@ -28,3 +28,9 @@ CREATE TABLE users(
     email TEXT,
     password_digest TEXT
 );
+
+CREATE TABLE carts(
+    id SERIAL PRIMARY KEY,
+    item TEXT,
+    quantity INTEGER
+);
