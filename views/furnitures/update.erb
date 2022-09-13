@@ -1,0 +1,28 @@
+<%# update %>
+<section class="each-container">
+    <h2>UPDATE ITEMS</h2>  
+    
+    <form action="/furnitures/<%= furniture['id']%>" method="POST" class="form">
+    <input type="hidden" name="_method" value="put">
+        <section class="form-row">
+            <label for="">Item: </label>
+            <input type="text" name="item" value="<%= furniture['item']%>">
+            <br>
+        </section>
+
+        <section class="form-row">
+            <label for="">Photo Url: </label>
+            <input type="text" name="photo_url" value="<%= furniture['photo_url']%>">
+            <br>
+        </section>
+        <section class="form-row">
+            <label for="">Quantity: </label>
+            <input type="text" name="quantity" value="<%= furniture['quantity']%>">
+            <br>
+        </section>
+
+        <button>Update</button>
+    </form> 
+    
+
+</section>
