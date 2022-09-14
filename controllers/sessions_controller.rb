@@ -17,6 +17,7 @@ post '/sessions' do
         "You are not a user"
     end
     redirect '/sessions/guest'
+    
 
 end
 
@@ -25,8 +26,7 @@ delete '/sessions' do
     redirect '/'
 end
 
-get '/.sessions/cart' do
-
+get '/sessions/cart' do
     run_sql("INSERT INTO users(user_name, email, password_digest) VALUES($1, $2, $3)", [user_name, email, password_digest])
 end
 
@@ -35,7 +35,6 @@ get '/sessions/staff' do
 end
 
 post '/sessions/staff' do
-
     email = params['email']
     password = params['password']
 
@@ -50,10 +49,11 @@ post '/sessions/staff' do
 end
 
 get '/sessions/guest' do
-    furnitures = all_furnitures()
+    furnitures = guest_furnitures()
     count = 0
     erb :'/sessions/guest', locals: {
-        count: count, 
+        count: count,
         furnitures: furnitures
     }
 end
+

@@ -82,12 +82,12 @@ put '/furnitures/:id/:count' do
     count += 1
     p count
 
-    # furnitures = all_furnitures()
+    furnitures = guest_furnitures()
 
-    # erb :'furnitures/index', locals:{
-    #     furnitures: furnitures,
-    #     count: count
-    # }
+    erb :'/sessions/guest', locals:{
+        furnitures: furnitures,
+        count: count
+    }
 
     redirect '/sessions/guest'
 end

@@ -1,6 +1,9 @@
 def all_furnitures
     run_sql("SELECT * FROM furnitures ORDER BY id")
 end
+def guest_furnitures
+    run_sql("SELECT * FROM furnitures WHERE price > 0 ORDER BY id;")
+end
 
 def donate_furniture(item, photo_url, quantity)
     run_sql("INSERT INTO furnitures (item, photo_url, quantity)
