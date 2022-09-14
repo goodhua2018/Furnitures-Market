@@ -145,9 +145,10 @@ body {
   line-height: 25px;
   color: white;
   border-radius: 3px;
-  width: 50px;
+  width: 70px;
   padding-bottom: 3px;
 }
+
 .items-add-count {
   font-size: 14px;
   color: red;

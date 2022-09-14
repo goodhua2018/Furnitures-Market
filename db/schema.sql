@@ -17,6 +17,14 @@ CREATE TABLE furnitures(
     quantity INTEGER
 );
 
+ALTER TABLE furnitures 
+ADD COLUMN 
+price FLOAT
+CHECK (price >= 0);
+
+
+INSERT INTO furnitures (item, photo_url)
+VALUES ('chiairs', 'ABC');
 
 
 INSERT INTO furnitures (item, photo_url, quantity)
@@ -34,8 +42,7 @@ CREATE TABLE sells(
     item TEXT,
     photo_url TEXT,
     quantity INTEGER,
-    price 
-
+    price FLOAT 
 )
 
 CREATE TABLE carts(
@@ -52,11 +59,14 @@ CREATE TABLE carts(
 ADD CONSTRAINT unique_likes
 UNIQUE(user_id, food_id);
 
- CREATE TABLE users(
+ CREATE TABLE staffs(
     id SERIAL PRIMARY KEY,
     first_name TEXT,
     last_name TEXT,
-    user_name TEXT,
+    staff_id INTEGER,
     email TEXT,
     password TEXT
 );
+
+INSERT INTO staff (first_name, last_name, staff_id, email, password)
+VALUES ('chiairs', 'ABC', 5);

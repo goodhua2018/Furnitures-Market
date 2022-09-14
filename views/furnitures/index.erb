@@ -2,7 +2,7 @@
 
 
 <% if logged_in? %>
-    <h2>Dear <%= current_user['user_name']%>, Welcome to Furniture Market </h2>
+    <h2>Dear staff, Welcome Home </h2>
 
     <nav class="nav">
 
@@ -15,8 +15,6 @@
            
             <%# add an item%>
             <a href="./furnitures/donate">Donate Furnitures</a>
-            <a href=".sessions/cart">My cart </a> 
-            <span class="items-add-count"> <%= count%> </span>
 
             <form action="/sessions" method="POST">
                 <input type="hidden" name="_method" value="delete">
@@ -32,12 +30,9 @@
                 <header>
                     <h2><%= furniture['item']%></h2>
                     <section class="control">
-                        <form action="/furnitures/<%= furniture['id']%>/<%= count %>" method="POST">
-                            <input type="hidden" name="_method" value="put">
-                            <button>Cart</button>
-                        </form>
-
+                        <a href="./furnitures/<%= furniture['id'] %>/setprice">Set Price</a>
                         <a href="./furnitures/<%= furniture['id'] %>/update">Update</a>
+                        
 
                         <form action="/furnitures/<%= furniture['id']%>" method="POST">
                             <input type="hidden" name="_method" value="delete">

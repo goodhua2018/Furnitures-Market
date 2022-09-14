@@ -1,4 +1,5 @@
 require './models/user'
+require './models/furniture'
 
 get '/sessions/new' do
     erb :'/sessions/new'
@@ -15,7 +16,7 @@ post '/sessions' do
     else
         "You are not a user"
     end
-    redirect '/'
+    redirect '/sessions/guest'
 
 end
 
@@ -46,4 +47,13 @@ post '/sessions/staff' do
     end
     redirect '/'
 
+end
+
+get '/sessions/guest' do
+    furnitures = all_furnitures()
+    count = 0
+    erb :'/sessions/guest', locals: {
+        count: count, 
+        furnitures: furnitures
+    }
 end

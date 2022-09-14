@@ -71,5 +71,9 @@ put '/furnitures/:id/:count' do
     #     count: count
     # }
 
-    redirect '/'
+    redirect '/sessions/guest'
+end
+
+get '/furnitures/:id/setprice' do
+    "Hello World"
 end
