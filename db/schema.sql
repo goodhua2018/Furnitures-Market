@@ -44,4 +44,19 @@ CREATE TABLE carts(
     quantity INTEGER
 );
 
- ALTER TABLE <数据表名> ADD CONSTRAINT <检查约束名> CHECK(<检查约束>)
+ ALTER TABLE <table name> 
+ ADD CONSTRAINT <name> 
+ CHECK(<condition>)
+
+ ALTER TABLE likes
+ADD CONSTRAINT unique_likes
+UNIQUE(user_id, food_id);
+
+ CREATE TABLE users(
+    id SERIAL PRIMARY KEY,
+    first_name TEXT,
+    last_name TEXT,
+    user_name TEXT,
+    email TEXT,
+    password TEXT
+);
