@@ -75,23 +75,31 @@ put '/furnitures/:id/setprice' do
     id = params['id']
    
     price = params['price']
-    run_sql("UPDATE furnitures SET price = $2 WHERE id = $1", [id, price])
+    set_price(id, price)
     redirect '/'
 end
 
-put '/furnitures/:id/:count' do
+put '/furnitures/:id/:user_name/addtocart' do
     id = params['id']
+    user_name = params['user_name']
+    p user_name
+
     quantity = params['quantity']
     update_stock(id)
-    count = params['count'].to_i
-    count += 1
-    p count
+    
 
     furnitures = guest_furnitures()
 
+    cartfurniture = find_furniture_by_id(id)
+    p cartfurniture
+    p item = cartfurniture['item']
+    p photo_url = cartfurniture['photo_url']
+    p price = cartfurniture['price']
+
+    run_sql("INSERT INTO carts (user_name, item, photo_url, price, quantity) VALUES ($1, $2, $3, $4, 1)", [user_name, item, photo_url, price])
+
     erb :'/sessions/guest', locals:{
         furnitures: furnitures,
-        count: count
     }
 
     redirect '/sessions/guest'

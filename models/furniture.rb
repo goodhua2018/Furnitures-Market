@@ -34,3 +34,11 @@ def data_entry_furniture(item, photo_url, quantity, price)
     run_sql("INSERT INTO furnitures (item, photo_url, quantity, price)
     VALUES ($1, $2, $3, $4)", [item, photo_url, quantity, price])
 end
+
+def find_furniture_by_id(id)
+    users = run_sql("SELECT * FROM furnitures WHERE id = $1", [id])[0]
+end
+
+def create_user_cart (user_name)
+    run_sql("SELECT * FROM carts WHERE user_name = $1", [user_name])
+end

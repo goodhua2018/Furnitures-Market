@@ -27,7 +27,12 @@ delete '/sessions' do
 end
 
 get '/sessions/cart' do
-    run_sql("INSERT INTO users(user_name, email, password_digest) VALUES($1, $2, $3)", [user_name, email, password_digest])
+    user_name = current_user['user_name']
+    carts = create_user_cart(user_name)
+    p carts
+    erb :'/sessions/cart', locals: {
+        carts: carts
+    } 
 end
 
 get '/sessions/staff' do
@@ -55,5 +60,9 @@ get '/sessions/guest' do
         count: count,
         furnitures: furnitures
     }
+end
+
+get '/sessions/checkout' do
+    "Thank you for your shopping!"
 end
 

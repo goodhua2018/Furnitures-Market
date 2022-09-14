@@ -1,0 +1,42 @@
+<h2><%= current_user['user_name']%>, One more Step to finish the shopping </h2>
+
+
+<nav class="nav">
+    <form action="/furnitures/search" class="nav-left">
+            <input type="text" name="item" value="Search an item">
+            <button>Search</button>
+    </form>
+
+    <section class="nav-right nav-cart">
+        <%# add an item%>
+        <a href="/sessions/guest">Home</a>
+        <a href="/sessions/checkout">Check out </a> 
+        <%# <span class="items-add-count"> 0 </span> %>
+
+        <form action="/sessions" method="POST">
+            <input type="hidden" name="_method" value="delete">
+            <button>Logout</button>
+        </form>
+        
+    </section>   
+</nav>
+
+<h1>My Shopping Cart</h1>
+
+<section class="cart-items">
+<% total = 0 %>
+    <% carts.each do |cart| %>
+        <section class="each-item">
+            <img src="<%= cart['photo_url']%>" alt="">
+            <h3><%= cart['item']%></h3>
+            <h3>$<%= cart['price']%></h3>
+            <h3><input type="" value="<%= cart['quantity']%>"></h3>
+        </section>
+        <% total += cart['price'].to_f * cart['quantity'].to_i %>
+    <% end %>
+    <p class="total-price">Total: $<%= total %></p>
+</section>
+
+<button class="check-out">CHECK OUT</button>
+    
+       

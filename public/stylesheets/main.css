@@ -159,3 +159,40 @@ body {
     margin-left: 80px;
     text-align: left;
 }
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 500px;
+    margin: 40px auto;
+}
+.cart-items img {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+
+}
+.each-item {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 2fr;
+    gap: 10px;
+    
+}
+
+.each-item input {
+    width: 20px;
+}
+
+.check-out {
+    height: 30px;
+    width: 200px;
+    background-color: red;
+    color: white;
+    margin-bottom: 100px;
+}
+
+.total-price {
+    text-align: right;
+    margin-right: 50px;
+}

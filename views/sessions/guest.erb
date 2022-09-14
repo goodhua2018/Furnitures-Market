@@ -11,7 +11,7 @@
         <section class="nav-right">
             <%# add an item%>
             <a href="./furnitures/donate">Donate Furnitures</a>
-            <a href="./sessions/cart">My cart </a> 
+            <a href="/sessions/cart">My cart </a> 
             <%# <span class="items-add-count"> 0 </span> %>
 
             <form action="/sessions" method="POST">
@@ -32,7 +32,7 @@
                     </section>
                     <section class="control">
                         
-                        <form action="/furnitures/<%= furniture['id']%>/<%= count %>" method="POST">
+                        <form action="/furnitures/<%= furniture['id']%>/<%= current_user['user_name']%>/addtocart" method="POST">
                             <input type="hidden" name="_method" value="put">
                             <button class="add-cart-btn">AddtoCart</button>
                         </form>

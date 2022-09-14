@@ -78,3 +78,16 @@ SELECT * FROM furnitures WHERE item ILIKE '%s';
 
 SELECT * FROM furnitures WHERE item ILIKE '%c%';
 SELECT * FROM furnitures WHERE item ILIKE 'c';
+
+CREATE TABLE carts(
+    id SERIAL PRIMARY KEY,
+    user_name TEXT,
+    item TEXT,
+    photo_url TEXT,
+    price FLOAT,
+    quantity INTEGER
+);
+
+"INSERT INTO carts (user_name, item, photo_url, price, quantity)
+VALUES ($1, $2, $3, 1)", [user_name, item, photo_url, price]
+

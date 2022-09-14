@@ -10,10 +10,11 @@
 
 
 ## :pencil2: Planning & Problem Solving
-- Design a shopping website with CRUD
-- Design logic
-- Design website layout
-
+- design a shopping website with CRUD, 
+- think about logic, users can buy furnitures while stadd can update, add and delete furnitures
+- design users and staff logic, login, signup staff login
+- design website layout
+- design database --- users information, furnitures, carts
 
 
 
@@ -35,6 +36,5 @@
 - login, sign up, donate pages have almost the same layout, I make them sharing the same CSS code
 
 ## :white_check_mark: Future features
-- search functions become blur search
-- add check out function
+- will get accesss to data from shopping carts by user_id, not user_name
 - add online enquiry function
