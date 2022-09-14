@@ -14,10 +14,10 @@
 - Design logic
 - Design website layout
 
-![design](https://user-images.githubusercontent.com/110290599/190041248-4bca7cd8-6fed-4c4a-86be-9f8fb2e8cee5.jpg)
 
 
-![Wireframing](./design.jpg)
+
+![Wireframing](./frame.jpg)
 
 ## :rocket: Cool tech
 - Ruby, CSS, HTML
