@@ -29,6 +29,15 @@ CREATE TABLE users(
     password_digest TEXT
 );
 
+CREATE TABLE sells(
+    id SERIAL PRIMARY KEY,
+    item TEXT,
+    photo_url TEXT,
+    quantity INTEGER,
+    price 
+
+)
+
 CREATE TABLE carts(
     id SERIAL PRIMARY KEY,
     item TEXT,

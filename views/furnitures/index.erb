@@ -32,7 +32,7 @@
                 <header>
                     <h2><%= furniture['item']%></h2>
                     <section class="control">
-                        <form action="/furnitures/<%= furniture['id']%>/<%= count %>/cart" method="POST">
+                        <form action="/furnitures/<%= furniture['id']%>/<%= count %>" method="POST">
                             <input type="hidden" name="_method" value="put">
                             <button>Cart</button>
                         </form>
