@@ -24,7 +24,7 @@
 <h1>My Shopping Cart</h1>
 
 <section class="cart-items">
-<% total = 0 %>
+    <% total = 0 %>
     <% carts.each do |cart| %>
         <section class="each-item">
             <img src="<%= cart['photo_url']%>" alt="">
@@ -36,7 +36,6 @@
                 <input type="hidden" name="_method" value="delete">
                 <button>X</button>
             </form>
-
         </section>
         <% total += cart['price'].to_f * cart['quantity'].to_i %>
     <% end %>

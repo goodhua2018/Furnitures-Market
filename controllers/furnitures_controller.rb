@@ -3,10 +3,10 @@ require './models/furniture'
 get '/' do
 
     furnitures = all_furnitures()
-    count = 0
+    
     erb :'furnitures/index', locals:{
         furnitures: furnitures,
-        count: count
+        
     }
 end
 

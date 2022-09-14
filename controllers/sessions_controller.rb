@@ -73,3 +73,6 @@ delete '/sessions/:id' do
     redirect '/sessions/cart'
 end
 
+get '/sessions/furnitures/donate' do
+    erb :'/furnitures/donate'
+end
