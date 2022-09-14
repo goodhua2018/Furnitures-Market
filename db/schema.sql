@@ -26,6 +26,8 @@ CHECK (price >= 0);
 INSERT INTO furnitures (item, photo_url)
 VALUES ('chiairs', 'ABC');
 
+UPDATE furnitures SET price = 25 WHERE id = 7;
+
 
 INSERT INTO furnitures (item, photo_url, quantity)
 VALUES ('chiairs', 'ABC', 5);

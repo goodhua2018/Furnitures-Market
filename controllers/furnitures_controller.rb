@@ -56,6 +56,24 @@ delete '/furnitures/:id' do
     redirect '/'
 end
 
+
+get '/furnitures/:id/setprice' do
+    id = params['id']
+    furniture = get_furniture(id)
+    # p furniture.to_a.to_s 
+    erb :'/furnitures/setprice', locals: {
+        furniture: furniture
+    }
+end
+
+put '/furnitures/:id/setprice' do
+    id = params['id']
+   
+    price = params['price']
+    run_sql("UPDATE furnitures SET price = $2 WHERE id = $1", [id, price])
+    redirect '/'
+end
+
 put '/furnitures/:id/:count' do
     id = params['id']
     quantity = params['quantity']
@@ -72,8 +90,4 @@ put '/furnitures/:id/:count' do
     # }
 
     redirect '/sessions/guest'
-end
-
-get '/furnitures/:id/setprice' do
-    "Hello World"
 end

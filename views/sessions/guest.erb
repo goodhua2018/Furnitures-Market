@@ -1,16 +1,13 @@
 
 <% if logged_in? %>
-<h2>Dear <%= current_user['user_name']%>, Welcome to Furniture Market </h2>
+<h2>Dear <%= current_user['user_name']%>, Welcome to Lucky Furniture Market </h2>
 
     <nav class="nav">
-
         <form action="/furnitures/search" class="nav-left">
             <input type="text" name="item" value="Search an item">
             <button>Search</button>
         </form>
         <section class="nav-right">
-
-           
             <%# add an item%>
             <a href="./furnitures/donate">Donate Furnitures</a>
             <a href=".sessions/cart">My cart </a> 
@@ -29,7 +26,11 @@
             <section class="furniture">
                 <header>
                     <h2><%= furniture['item']%></h2>
+                    <section class="price">
+                        <h3>Price: $<%= furniture['price']%></h3>
+                    </section>
                     <section class="control">
+                        
                         <form action="/furnitures/<%= furniture['id']%>/<%= count %>" method="POST">
                             <input type="hidden" name="_method" value="put">
                             <button>AddtoCart</button>

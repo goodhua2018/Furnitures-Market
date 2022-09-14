@@ -22,3 +22,7 @@ end
 def update_stock(id)
     run_sql("UPDATE furnitures SET quantity = quantity - 1  WHERE id = $1", [id])
 end
+
+def set_price(id, price)
+    run_sql("UPDATE furnitures SET price = $2 WHERE id = $1", [id, price])
+end

@@ -1,0 +1,29 @@
+<%# update & setprice %>
+<section class="each-container">
+    <h2>UPDATE ITEMS & SET PRICE</h2>  
+    
+    <form action="/furnitures/<%= furniture['id']%>/setprice" method="POST" class="form">
+    <input type="hidden" name="_method" value="put">
+        <section class="form-row">
+            <label for="">Item: </label>
+            <input type="text" name="item" value="<%= furniture['item']%>">
+            <br>
+        </section>
+
+        
+        <section class="form-row">
+            <label for="">Quantity: </label>
+            <input type="text" name="quantity" value="<%= furniture['quantity']%>">
+            <br>
+        </section>
+        <section class="form-row">
+            <label for="">Price: </label>
+            <input type="text" name="price" value="<%= furniture['price']%>">
+            <br>
+        </section>
+
+        <button>Update</button>
+    </form> 
+    
+
+</section>
