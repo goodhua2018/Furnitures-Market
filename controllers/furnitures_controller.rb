@@ -12,9 +12,14 @@ end
 
 get '/furnitures/search' do
     item = params['item']
-    furniturn = run_sql("SELECT * FROM furnitures WHERE item = $1", [item])
+    p item.class
+    item = "%#{item}%"
+    p item
+    furnitures = run_sql("SELECT * FROM furnitures WHERE item ILIKE $1", [item])
+    p furnitures
+
     erb :'/furnitures/search', locals: {
-        furniture: furniture
+        furnitures: furnitures
     }
 end
 
@@ -90,4 +95,20 @@ put '/furnitures/:id/:count' do
     }
 
     redirect '/sessions/guest'
+end
+
+get '/furnitures/datamanage' do
+    erb :'/furnitures/datamanage'
+end
+
+post '/furnitures/staff' do
+
+    item = params['item']
+    photo_url = params['photo_url']
+    quantity = params['quantity']
+    price = params['price']
+    data_entry_furniture(item, photo_url, quantity, price)
+    # add 
+    redirect '/'
+    
 end

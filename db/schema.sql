@@ -72,3 +72,9 @@ UNIQUE(user_id, food_id);
 
 INSERT INTO staff (first_name, last_name, staff_id, email, password)
 VALUES ('chiairs', 'ABC', 5);
+
+
+SELECT * FROM furnitures WHERE item ILIKE '%s';
+
+SELECT * FROM furnitures WHERE item ILIKE '%c%';
+SELECT * FROM furnitures WHERE item ILIKE 'c';

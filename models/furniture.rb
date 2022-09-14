@@ -29,3 +29,8 @@ end
 def set_price(id, price)
     run_sql("UPDATE furnitures SET price = $2 WHERE id = $1", [id, price])
 end
+
+def data_entry_furniture(item, photo_url, quantity, price)
+    run_sql("INSERT INTO furnitures (item, photo_url, quantity, price)
+    VALUES ($1, $2, $3, $4)", [item, photo_url, quantity, price])
+end
