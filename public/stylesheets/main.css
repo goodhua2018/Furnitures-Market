@@ -175,7 +175,7 @@ body {
 }
 .each-item {
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr 2fr;
+    grid-template-columns: 1fr 4fr 1fr 2fr 1fr;
     gap: 10px;
     
 }
@@ -195,4 +195,9 @@ body {
 .total-price {
     text-align: right;
     margin-right: 50px;
+}
+
+.cart-delete {
+  height: 25px;
+  margin-top: 20px;
 }

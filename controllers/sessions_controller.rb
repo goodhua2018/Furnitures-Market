@@ -66,3 +66,10 @@ get '/sessions/checkout' do
     "Thank you for your shopping!"
 end
 
+
+delete '/sessions/:id' do
+    id = params['id']
+    delete_item_in_cart(id)
+    redirect '/sessions/cart'
+end
+

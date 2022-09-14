@@ -42,3 +42,7 @@ end
 def create_user_cart (user_name)
     run_sql("SELECT * FROM carts WHERE user_name = $1", [user_name])
 end
+
+def delete_item_in_cart(id)
+    run_sql("DELETE FROM carts WHERE id = $1", [id])
+end

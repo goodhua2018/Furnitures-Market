@@ -9,7 +9,7 @@
 
     <section class="nav-right nav-cart">
         <%# add an item%>
-        <a href="/sessions/guest">Home</a>
+        <a href="/sessions/guest">Back</a>
         <a href="/sessions/checkout">Check out </a> 
         <%# <span class="items-add-count"> 0 </span> %>
 
@@ -31,6 +31,12 @@
             <h3><%= cart['item']%></h3>
             <h3>$<%= cart['price']%></h3>
             <h3><input type="" value="<%= cart['quantity']%>"></h3>
+           
+            <form action="/sessions/<%= cart['id']%>" method="POST" class="cart-delete">
+                <input type="hidden" name="_method" value="delete">
+                <button>X</button>
+            </form>
+
         </section>
         <% total += cart['price'].to_f * cart['quantity'].to_i %>
     <% end %>
