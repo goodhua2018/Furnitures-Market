@@ -43,3 +43,5 @@ CREATE TABLE carts(
     item TEXT,
     quantity INTEGER
 );
+
+ ALTER TABLE <数据表名> ADD CONSTRAINT <检查约束名> CHECK(<检查约束>)

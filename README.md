@@ -14,7 +14,7 @@
 - Design logic
 - Design website layout
 - 
-![Wireframing](./images/design.jpg)
+![Wireframing](./design.jpg)
 
 ## :rocket: Cool tech
 - Ruby, CSS, HTML
