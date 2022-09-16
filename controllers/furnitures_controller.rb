@@ -82,24 +82,27 @@ end
 put '/furnitures/:id/:user_name/addtocart' do
     id = params['id']
     user_name = params['user_name']
-    p user_name
-
     quantity = params['quantity']
-    update_stock(id)
+    addtocart_update_stock(id)
+
     
 
     furnitures = guest_furnitures()
 
     cartfurniture = find_furniture_by_id(id)
-    p cartfurniture
-    p item = cartfurniture['item']
-    p photo_url = cartfurniture['photo_url']
-    p price = cartfurniture['price']
+    cartfurniture
+    item = cartfurniture['item']
+    photo_url = cartfurniture['photo_url']
+    price = cartfurniture['price']
 
-    run_sql("INSERT INTO carts (user_name, item, photo_url, price, quantity) VALUES ($1, $2, $3, $4, 1)", [user_name, item, photo_url, price])
+    run_sql("INSERT INTO carts (user_name, item, photo_url, price, quantity, item_id) VALUES ($1, $2, $3, $4, 1, $5)", [user_name, item, photo_url, price,  id])
+
+    count = run_sql("SELECT COUNT(*) AS abc FROM carts WHERE user_name = $1",[user_name])[0]
+    count = count['abc']
 
     erb :'/sessions/guest', locals:{
-        furnitures: furnitures,
+        count: count,
+        furnitures: furnitures
     }
 
     redirect '/sessions/guest'
