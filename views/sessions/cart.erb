@@ -30,15 +30,15 @@
             <img src="<%= cart['photo_url']%>" alt="">
             <h3><%= cart['item']%></h3>
             <h3>$<%= cart['price']%></h3>
-            <h3><input type="" value="<%= cart['quantity']%>"></h3>
+            <h3><input type="" value="<%= cart['count'] %>"></h3>
            
-            <form action="/sessions/<%= cart['id']%>" method="POST" class="cart-delete">
+            <form action="/sessions/<%= cart['item_id']%>" method="POST" class="cart-delete">
                 <input type="hidden" name="_method" value="delete">
                 <button>X</button>
             </form>
 
         </section>
-        <% total += cart['price'].to_f * cart['quantity'].to_i %>
+        <% total += cart['price'].to_f * cart['count'].to_i %>
     <% end %>
     <p class="total-price">Total: $<%= total %></p>
 </section>

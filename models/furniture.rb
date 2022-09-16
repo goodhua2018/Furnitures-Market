@@ -22,7 +22,7 @@ def delete_furniture(id)
     run_sql("DELETE FROM furnitures WHERE id = $1", [id])
 end
 
-def update_stock(id)
+def addtocart_update_stock(id)
     run_sql("UPDATE furnitures SET quantity = quantity - 1  WHERE id = $1", [id])
 end
 
@@ -45,4 +45,12 @@ end
 
 def delete_item_in_cart(id)
     run_sql("DELETE FROM carts WHERE id = $1", [id])
+end
+
+def create_temp_cart(user_name)
+    run_sql("SELECT item_id, SUM(quantity)
+    INTO tempcarts
+    FROM carts
+    WHERE user_name = $1
+    GROUP BY item_id", [user_name])
 end

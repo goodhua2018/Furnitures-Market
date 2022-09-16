@@ -1,7 +1,7 @@
 
 <% if logged_in? %>
 <h2>Dear <%= current_user['user_name']%>, Welcome to Lucky Furniture Market </h2>
-<% furnitures %> 
+
 
     <nav class="nav">
         <form action="/furnitures/search" class="nav-left">
@@ -12,7 +12,7 @@
             <%# add an item%>
             <a href="./furnitures/donate">Donate Furnitures</a>
             <a href="/sessions/cart">My cart </a> 
-            <%# <span class="items-add-count"> 0 </span> %>
+            <span class="items-add-count"> <%= count %> </span>
 
             <form action="/sessions" method="POST">
                 <input type="hidden" name="_method" value="delete">
@@ -33,6 +33,7 @@
                     <section class="control">
                         
                         <form action="/furnitures/<%= furniture['id']%>/<%= current_user['user_name']%>/addtocart" method="POST">
+                    
                             <input type="hidden" name="_method" value="put">
                             <button class="add-cart-btn">AddtoCart</button>
                         </form>
