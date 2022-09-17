@@ -5,13 +5,16 @@
 
 ## :page_facing_up: About
 - It's a online shopping and donating webside for second-hand furniture store.
-- Every guest can visit the website and donate their pre-loved furnitures.
-- Only logged-in guest can update, delete and buy furnitures. 
+- Every guest can visit the website, search furnitures and donate their pre-loved furnitures.
+- logged-in guest can add furnitures to shopping cart, delete and update furnitures in the shopping cart.
+- staff can update furnitures stock, set price for the furnitures, delete items and perform data entry.
+
+
 
 
 ## :pencil2: Planning & Problem Solving
 - design a shopping website with CRUD, 
-- think about logic, users can buy furnitures while stadd can update, add and delete furnitures
+- think about logic, users can buy furnitures while staff can update, add and delete furnitures
 - design users and staff logic, login, signup staff login
 - design website layout
 - design database --- users information, furnitures, carts
@@ -28,7 +31,7 @@
 
 ## :scream: Bugs to fix :poop:
 - The quantity of furniture can be drop below 0.
-- If the number of added cart furniture can not be seen on the page, then the update and donate funtion disabled. 
+- If the number of added cart furniture can not be seen on the page, then the update and donate funtion disabled.  fixed 
 
 
 ## :sob: Lessons learnt
