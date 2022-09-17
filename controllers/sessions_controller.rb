@@ -33,6 +33,7 @@ get '/sessions/cart' do
     LEFT JOIN (SELECT item_id, COUNT (*) FROM carts  WHERE user_name = $1 GROUP BY item_id) as temp2
     ON temp1.item_id = temp2.item_id", [user_name]
    )
+   
 
   
     #     carts = run_sql("SELECT * FROM tempcarts LEFT JOIN furnitures ON tempcarts.item_id = furnitures.id")
@@ -82,8 +83,8 @@ get '/sessions/checkout' do
 end
 
 
-delete '/sessions/:item_id' do
-    item_id = params['item_id']
+delete '/sessions/:id' do
+    item_id = params['id']
     user_name = current_user['user_name']
     p item_id
     p user_name
