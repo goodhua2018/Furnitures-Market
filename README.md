@@ -4,9 +4,9 @@
 ## :computer: [Click here](https://fathomless-fortress-15915.herokuapp.com/) to see my live project!
 
 ## :page_facing_up: About
-- It's a online shopping and donating webside for second-hand furniture store.
-- Every guest can visit the website, search furnitures and donate their pre-loved furnitures.
-- logged-in guest can add furnitures to shopping cart, delete and update furnitures in the shopping cart.
+- It's an online shopping and donating webside for second-hand furniture store.
+- Every guest without signing up can visit the website, search furnitures and donate their pre-loved furnitures.
+- People who signed up and then logged-in as the guest can add furnitures to shopping cart, delete and update furnitures in the shopping cart.
 - staff can update furnitures stock, set price for the furnitures, delete items and perform data entry.
 
 

@@ -2,15 +2,14 @@
 <h2 class="search-results">Results</h2>
 
 <section class="furnitures">
-        <% furnitures.each do |furniture| %>
-            <section class="furniture">
-                <header>
-                    <h2><%= furniture['item']%></h2>
-                    
-                </header>
-                <img src="<%= furniture['photo_url']%>" alt="">
-                <p><span class="num-left"><%= furniture['quantity'] %> </span> in Stock</p>
-                <p> Price: $<span class="num-left"><%= furniture['price'] %> </span> </p>
-            </section>
-        <% end %>
+  <% furnitures.each do |furniture| %>
+    <section class="furniture">
+      <header>
+        <h2><%= furniture['item']%></h2>
+      </header>
+      <img src="<%= furniture['photo_url']%>" alt="">
+      <p><span class="num-left"><%= furniture['quantity'] %> </span> in Stock</p>
+      <p> Price: $<span class="num-left"><%= furniture['price'] %> </span> </p>
+    </section>
+  <% end %>
 </section>

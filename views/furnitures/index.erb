@@ -2,86 +2,74 @@
 
 
 <% if logged_in? %>
-    <h2>Dear staff, Welcome Home </h2>
+  <h2>Dear staff, Welcome Home </h2>
+  <nav class="nav">
+    <form action="/furnitures/search" class="nav-left">
+      <input type="text" name="item" value="Search an item">
+      <button>Search</button>
+    </form>
+    <section class="nav-right">
+ 
+    <%# add an item%>
+      <a href="./furnitures/datamanage">Data Manage</a>
+      <form action="/sessions" method="POST">
+          <input type="hidden" name="_method" value="delete">
+          <button>Logout</button>
+      </form>     
+    </section>   
+  </nav>
 
-    <nav class="nav">
-
-        <form action="/furnitures/search" class="nav-left">
-            <input type="text" name="item" value="Search an item">
-            <button>Search</button>
-        </form>
-        <section class="nav-right">
-
-           
-            <%# add an item%>
-            <a href="./furnitures/datamanage">Data Manage</a>
-
-            <form action="/sessions" method="POST">
+  <section class="furnitures">
+    <% furnitures.each do |furniture| %>
+      <section class="furniture">
+        <header>
+          <h2><%= furniture['item']%></h2>
+          <section class="control">
+            <a href="./furnitures/<%= furniture['id'] %>/setprice">Set Price</a>
+            <a href="./furnitures/<%= furniture['id'] %>/update">Update</a>
+  
+            <form action="/furnitures/<%= furniture['id']%>" method="POST">
                 <input type="hidden" name="_method" value="delete">
-                <button>Logout</button>
-            </form>
-            
-        </section>   
-    </nav>
-
-    <section class="furnitures">
-        <% furnitures.each do |furniture| %>
-            <section class="furniture">
-                <header>
-                    <h2><%= furniture['item']%></h2>
-                    <section class="control">
-                        <a href="./furnitures/<%= furniture['id'] %>/setprice">Set Price</a>
-                        <a href="./furnitures/<%= furniture['id'] %>/update">Update</a>
-                        
-
-                        <form action="/furnitures/<%= furniture['id']%>" method="POST">
-                            <input type="hidden" name="_method" value="delete">
-                            <button>Delete</button>
-                        </form>
-                        
-                    </section>
-                    
-                </header>
-                <img src="<%= furniture['photo_url']%>" alt="">
-                <p><span class="num-left"><%= furniture['quantity'] %> </span> in Stock</p>
-                <p> Price: $<span class="num-left"><%= furniture['price'] %> </span> </p>
-            </section>
-        <% end %>
-    </section>
+                <button>Delete</button>
+            </form> 
+          </section>  
+        </header>
+        <img src="<%= furniture['photo_url']%>" alt="">
+        <p><span class="num-left"><%= furniture['quantity'] %> </span> in Stock</p>
+        <p> Price: $<span class="num-left"><%= furniture['price'] %> </span> </p>
+      </section>
+    <% end %>
+  </section>
 <% else %>
-
-    <nav class="nav">
-
-        <form action="/furnitures/search" class="nav-left">
-            <input type="text" name="item" value="Search an item">
-            <button>Search</button>
-        </form>
-        <section class="nav-right">
-            <%# add an item%>
-            <a href="./furnitures/donate">Donate Furnitures</a>
-            <a href="/users/new">Sign up</a>
-            <a href="/sessions/new">Login</a>
-            <a href="/sessions/staff">Staff</a>
-           
-        </section>   
-    </nav>
-    <section class="describe">
-        <h2>We are here to support you</h2>
-        <p>We are a family-owned second-hand furniturn store located at 55 Lucky Street in Adelaide. </p>
-        <p>We sell high-quality pre-loved furnitures and you will always be sure to find yourself a bargain. We also accept donations of all kinds of furnitures.</p>
-        <img src="https://images.unsplash.com/photo-1582037928769-181f2644ecb7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">
-    </section>
-    <section class="main">
+  <nav class="nav">
+    <form action="/furnitures/search" class="nav-left">
+        <input type="text" name="item" value="Search an item">
+        <button>Search</button>
+    </form>
+    <section class="nav-right">
+      <%# add an item%>
+      <a href="./furnitures/donate">Donate Furnitures</a>
+      <a href="/users/new">Sign up</a>
+      <a href="/sessions/new">Login</a>
+      <a href="/sessions/staff">Staff</a> 
+    </section>   
+  </nav>
+  <section class="describe">
+    <h2>We are here to support you</h2>
+    <p>We are a family-owned second-hand furniturn store located at 55 Lucky Street in Adelaide. </p>
+    <p>We sell high-quality pre-loved furnitures and you will always be sure to find yourself a bargain. We also accept donations of all kinds of furnitures.</p>
+    <img src="https://images.unsplash.com/photo-1582037928769-181f2644ecb7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">
+  </section>
+  <section class="main">
         
-        <img src="https://images.unsplash.com/photo-1550226891-ef816aed4a98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">    
-        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=958&q=80" alt="">
-        <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="">
-        <img src="https://images.unsplash.com/photo-1623920996377-9c5cd536143e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1550226891-ef816aed4a98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">    
+    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=958&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1623920996377-9c5cd536143e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="">
 
-    </section>
-    <footer class="footer">
+  </section>
+  <footer class="footer">
     © COPYRIGHT 2022. ALL RIGHTS RESERVED
-    
-    </footer>
+  </footer>
 <% end %>
 

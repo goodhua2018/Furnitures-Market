@@ -1,48 +1,42 @@
 
 <% if logged_in? %>
-<h2>Dear <%= current_user['user_name']%>, Welcome to Lucky Furniture Market </h2>
+  <h2>Dear <%= current_user['user_name']%>, Welcome to Lucky Furniture Market </h2>
+  <nav class="nav">
+    <form action="/furnitures/search" class="nav-left">
+      <input type="text" name="item" value="Search an item">
+      <button>Search</button>
+    </form>
+    <section class="nav-right">
+      <%# add an item%>
+      <a href="/furnitures/donate">Donate Furnitures</a>
+      <a href="/sessions/cart">My cart </a> 
+      <span class="items-add-count"> <%= count %> </span>
 
+      <form action="/sessions" method="POST">
+          <input type="hidden" name="_method" value="delete">
+          <button>Logout</button>
+      </form>
+    </section>   
+  </nav>
 
-    <nav class="nav">
-        <form action="/furnitures/search" class="nav-left">
-            <input type="text" name="item" value="Search an item">
-            <button>Search</button>
-        </form>
-        <section class="nav-right">
-            <%# add an item%>
-            <a href="/furnitures/donate">Donate Furnitures</a>
-            <a href="/sessions/cart">My cart </a> 
-            <span class="items-add-count"> <%= count %> </span>
-
-            <form action="/sessions" method="POST">
-                <input type="hidden" name="_method" value="delete">
-                <button>Logout</button>
+  <section class="furnitures">
+    <% furnitures.each do |furniture| %>
+      <section class="furniture">
+        <header>
+          <h2><%= furniture['item']%></h2>
+          <section class="price">
+              <h3>Price: $<%= furniture['price']%></h3>
+          </section>
+          <section class="control">
+            <form action="/furnitures/<%= furniture['id']%>/<%= current_user['user_name']%>/addtocart" method="POST">
+              <input type="hidden" name="_method" value="put">
+              <button class="add-cart-btn">AddtoCart</button>
             </form>
-            
-        </section>   
-    </nav>
-
-    <section class="furnitures">
-        <% furnitures.each do |furniture| %>
-            <section class="furniture">
-                <header>
-                    <h2><%= furniture['item']%></h2>
-                    <section class="price">
-                        <h3>Price: $<%= furniture['price']%></h3>
-                    </section>
-                    <section class="control">
-                        
-                        <form action="/furnitures/<%= furniture['id']%>/<%= current_user['user_name']%>/addtocart" method="POST">
-                    
-                            <input type="hidden" name="_method" value="put">
-                            <button class="add-cart-btn">AddtoCart</button>
-                        </form>
-                    </section>
-                    
-                </header>
-                <img src="<%= furniture['photo_url']%>" alt="">
-                <p><span class="num-left"><%= furniture['quantity'] %> </span> in Stock</p>
-            </section>
-        <% end %>
-    </section>
+          </section>
+        </header>
+        <img src="<%= furniture['photo_url']%>" alt="">
+        <p><span class="num-left"><%= furniture['quantity'] %> </span> in Stock</p>
+      </section>
+    <% end %>
+  </section>
 <% end %>
